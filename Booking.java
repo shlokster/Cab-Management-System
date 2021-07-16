@@ -11,8 +11,8 @@
 //        string location, loc[], String type of car,
 import java.util.*;
 public class Booking {
-    private int time, bookingID, driverno;
-    private String location1, location2, carType;
+    private int time, driverno;
+    private String location1, location2, carType, bookingID;
     private String loc[] = { "Liverpool", "Manchester", "Cambridge", "Oxford", "Brighton"};
     Driver[] drivers;
 
@@ -26,6 +26,10 @@ public class Booking {
 
     public void setLocation(){
         drivers[driverno].setLoc(location2);
+    }
+    
+    private void setBookingID(){
+        bookingID = UUID.randomUUID().toString();
     }
 
     public boolean isDriver(){
@@ -77,6 +81,7 @@ public class Booking {
     public void showBooking(){
         System.out.println("\t\tBooking Details: ");
         System.out.println("**********************************");
+        System.out.println("Booking ID: " + bookingID);
         System.out.println("Driver Name: " + drivers[driverno].getName());
         System.out.println("Driver Contact: " + drivers[driverno].getNumber());
         System.out.println("Time of pickup: " + time);
