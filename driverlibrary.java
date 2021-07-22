@@ -2,11 +2,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class driverlibrary {
-	private driver[] drivers;
+public class DriverLibrary {
+	private Driver[] Drivers;
 
-	public driverlibrary() {
-		drivers = null;
+	public DriverLibrary() {
+		Drivers = null;
 	}
 
 	public void driverdetails(String filename) {
@@ -28,7 +28,7 @@ public class driverlibrary {
 				boolean gender = Boolean.parseBoolean(records[7]);
 				float rating = Float.parseFloat(records[8]);
 				int count = 0;
-                drivers[count] = new driver(driverID, name, location, type, PhNum, age, cabID, gender, rating);
+                Drivers[count] = new Driver(driverID, name, location, type, PhNum, age, cabID, gender, rating);
 				count++;
 				br.close();
 			}
@@ -39,7 +39,7 @@ public class driverlibrary {
 	}
 
 	public static void main(String[] args) {
-		driverlibrary x = new driverlibrary();
+		DriverLibrary x = new DriverLibrary();
 		String csvFile = "Driver.csv";
 		x.driverdetails(csvFile);
 
