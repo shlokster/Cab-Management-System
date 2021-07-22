@@ -9,6 +9,7 @@
 //        Variables:
 //        Int time , bookingId
 //        string location, loc[], String type of car,
+import java.io.IOException;
 import java.util.*;
 public class Booking {
     private int time, driverno;
@@ -16,8 +17,9 @@ public class Booking {
     private String loc[] = { "Liverpool", "Manchester", "Cambridge", "Oxford", "Brighton"};
     Driver[] drivers;
 
-    public void getDrivers(Driver[] drivers){
-        this.drivers = drivers;
+    public void getDrivers(){
+        driverlibrary d1 = new driverlibrary();
+        drivers = Arrays.copyOf(d1.getDrivers(), 25);
     }
 
     public double getDistance(){
@@ -35,7 +37,7 @@ public class Booking {
     public boolean isDriver(){
         int i;
         for(i =0; i< drivers.length; i++)
-            if(drivers[i].getLocation()==location1 && //checks if driver is available at
+            if(drivers[i].getLocation().equals(location1) && //checks if driver is available at
                     drivers[i].getCarType() == carType)  //given location with given carType
             {
                 driverno = i;
@@ -67,7 +69,6 @@ public class Booking {
         location2 = in.nextLine();
         System.out.println("Enter type of car: ");
         carType = in.nextLine();
-        int i;
         isDriver();
         if(isDriver())
         {
@@ -87,4 +88,16 @@ public class Booking {
         System.out.println("Time of pickup: " + time);
         System.out.println("Distance: " + getDistance());
     }
+
+    public static void main(String[] args) {
+        driverlibrary d1 = new driverlibrary();
+        d1.driverdetails("Driver.csv");
+        Booking b1 = new Booking();
+        b1.getDrivers();
+        b1.makeBooking();
+
+
+    }
+    
+
 }
