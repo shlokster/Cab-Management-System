@@ -18,7 +18,7 @@ public class Booking {
     Driver[] drivers;
 
     public void getDrivers(){
-        driverlibrary d1 = new driverlibrary();
+        DriverLibrary d1 = new DriverLibrary();
         drivers = Arrays.copyOf(d1.getDrivers(), 25);
     }
 
@@ -90,7 +90,7 @@ public class Booking {
     }
 
     public static void main(String[] args) {
-        driverlibrary d1 = new driverlibrary();
+        DriverLibrary d1 = new DriverLibrary();
         d1.driverdetails("Driver.csv");
         Booking b1 = new Booking();
         b1.getDrivers();
