@@ -35,7 +35,7 @@ public class Driver {
 		this.rating = rating;
 	}
 
-	public int getDriverid() {
+	public int getDriverID() {
 		return driverID;
 	}
 
@@ -49,11 +49,11 @@ public class Driver {
 
 	}
 
-	public String getTypeofcar() {
+	public String getCarType() {
 		return type;
 	}
 
-	public long getPhnum() {
+	public long getNumber() {
 		return PhNum;
 	}
 
