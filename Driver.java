@@ -12,7 +12,7 @@ Float rating
 public class Driver {
 	private final int driverID;
 	private final String name;
-	private final String location;
+	private String location;
 	private final String type;
 	private final long PhNum;
 	private final int age;
