@@ -66,6 +66,9 @@ public class Driver {
 		return cabID;
 
 	}
+        public void setLoc(String location2) {
+        location = location2;
+        }
 
 	public float getRating() {
 		return rating;
