@@ -70,6 +70,9 @@ public class driver {
 	public float getrating() {
 		return rating;
 	}
+	public boolean getgender(){
+		return gender;
+	}
 
 	public String toString() {
 		String s = "";
