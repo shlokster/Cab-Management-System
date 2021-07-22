@@ -9,7 +9,7 @@ Boolean gender
 Float rating
 */
 
-public class driver {
+public class Driver {
 	private final int driverID;
 	private final String name;
 	private final String location;
@@ -21,7 +21,7 @@ public class driver {
 	private final float rating;
 	// private driver[] drivers;
 
-	public driver(int driverID, String name, String location, String type, long PhNum, int age, int cabID,
+	public Driver(int driverID, String name, String location, String type, long PhNum, int age, int cabID,
 			boolean gender, float rating) {//
 
 		this.driverID = driverID;
@@ -35,16 +35,16 @@ public class driver {
 		this.rating = rating;
 	}
 
-	public int getdriverid() {
+	public int getDriverid() {
 		return driverID;
 	}
 
-	public String getname() {
+	public String getName() {
 		return name;
 
 	}
 
-	public String getlocation() {
+	public String getLocation() {
 		return location;
 
 	}
@@ -53,24 +53,24 @@ public class driver {
 		return type;
 	}
 
-	public long getphnum() {
+	public long getPhnum() {
 		return PhNum;
 	}
 
-	public int getage() {
+	public int getAge() {
 		return age;
 
 	}
 
-	public int getcabID() {
+	public int getCabID() {
 		return cabID;
 
 	}
 
-	public float getrating() {
+	public float getRating() {
 		return rating;
 	}
-	public boolean getgender(){
+	public boolean getGender(){
 		return gender;
 	}
 
