@@ -22,7 +22,7 @@ public class Driver {
 	// private driver[] drivers;
 
 	public Driver(int driverID, String name, String location, String type, long PhNum, int age, int cabID,
-			boolean gender, float rating) {//
+			boolean gender, float rating) {
 
 		this.driverID = driverID;
 		this.name = name;
