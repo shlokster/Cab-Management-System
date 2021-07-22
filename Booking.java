@@ -9,17 +9,19 @@
 //        Variables:
 //        Int time , bookingId
 //        string location, loc[], String type of car,
+import java.awt.print.Book;
 import java.io.IOException;
 import java.util.*;
 public class Booking {
-    private int time, driverno;
+    private int time, driverno, numOfDrivers;
     private String location1, location2, carType, bookingID;
     private String loc[] = { "Liverpool", "Manchester", "Cambridge", "Oxford", "Brighton"};
-    Driver[] drivers;
+    public Driver[] drivers;
 
-    public void getDrivers(){
-        DriverLibrary d1 = new DriverLibrary();
-        drivers = Arrays.copyOf(d1.getDrivers(), 25);
+    public Booking(String filename){
+        DriverLibrary d1 = new DriverLibrary(filename);
+        numOfDrivers = d1.getnumOfDrivers();
+        drivers = Arrays.copyOfRange(d1.getDrivers(), 0, 25);
     }
 
     public double getDistance(){
@@ -29,15 +31,16 @@ public class Booking {
     public void setLocation(){
         drivers[driverno].setLoc(location2);
     }
-    
+
     private void setBookingID(){
         bookingID = UUID.randomUUID().toString();
     }
 
-    public boolean isDriver(){
+    public boolean isDriver(String location1){
         int i;
-        for(i =0; i< drivers.length; i++)
-            if(drivers[i].getLocation().equals(location1) && //checks if driver is available at
+
+        for(i =0; i< numOfDrivers; i++){
+            if(drivers[i].getLocation() == location1 && //checks if driver is available at
                     drivers[i].getCarType() == carType)  //given location with given carType
             {
                 driverno = i;
@@ -46,7 +49,7 @@ public class Booking {
         if(i == drivers.length){
             System.out.println("Driver unavailable, please try again later.");
             return false;
-        }
+        }}
         if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
                                                 //availability at early hours
             if(Math.random()>=0.75)
@@ -63,15 +66,16 @@ public class Booking {
         time = in.nextInt();
         System.out.println("Enter pickup location from the following: ");
         System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
-        location1 = in.nextLine();
+        location1 = in.next();
         System.out.println("Enter drop-off location from the following: ");
         System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
-        location2 = in.nextLine();
+        location2 = in.next();
         System.out.println("Enter type of car: ");
         carType = in.nextLine();
-        isDriver();
-        if(isDriver())
+        isDriver(location1);
+        if(isDriver(location1))
         {
+            setBookingID();
             showBooking();
             setLocation();
         }
@@ -90,14 +94,12 @@ public class Booking {
     }
 
     public static void main(String[] args) {
-        DriverLibrary d1 = new DriverLibrary();
-        d1.driverdetails("Driver.csv");
-        Booking b1 = new Booking();
-        b1.getDrivers();
+        Booking b1 = new Booking("Driver.csv");
         b1.makeBooking();
 
 
     }
-    
+
 
 }
+
