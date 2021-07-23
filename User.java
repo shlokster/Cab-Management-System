@@ -53,8 +53,11 @@ public class User {
 		System.out.println("Enter Password: ");
 		String password = scan.nextLine();
 		System.out.println("Enter Phone Number: ");
+		long PhNum = scan.getLong();
 		System.out.println("Enter Age: ");
-		System.out.println("Enter Gender: ");
+		int age = scan.getInt();
+		System.out.println("Enter Gender: \nPress 1 for Female\nPress 0 for Male");
+		Boolean gender = scan.getBoolean();
 	}
 	
 
