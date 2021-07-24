@@ -7,12 +7,13 @@ public class MainClass {
 		String filename = "Drivers.csv";
 		Admin a = new Admin(filename);
 		
-		Booking b = new Booking();		
+		Booking b = new Booking();	
 		System.out.print("Your fare for this ride is : ");		
 		System.out.print(a.getReceipt(b.getDistance()));
 		
 		Scanner myObj = new Scanner(System.in);
 		Scanner myObj1 = new Scanner(System.in);
+		Scanner myObj2 = new Scanner(System.in);
 		
 	    System.out.println("\nDo you want to add another driver (Y or N) : ");
 	    String checkadd = myObj.next();
@@ -58,9 +59,15 @@ public class MainClass {
 		    a.deleteDriver(dID);  
 	    }
 	    	 
+	    if(b.isDriver()) {
+	    	System.out.print("Please enter the rating after the trip : ");
+	    	float drating = myObj2.nextFloat();
+	    	a.setRating(drating, b.driverno);  
+	    }
+	    
 	    myObj1.close();
 	    myObj.close();
-	      
+	    myObj2.close();
 	}
-
+	
 }
