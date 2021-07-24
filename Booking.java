@@ -23,6 +23,10 @@ public class Booking {
         numOfDrivers = d1.getnumOfDrivers();
         drivers = Arrays.copyOfRange(d1.getDrivers(), 0, 25);
     }
+    
+    public int getDriverNo(){
+        return this.driverno;
+    }
 
     public double getDistance(){
         return Math.abs(Arrays.asList(loc).indexOf(location1) - Arrays.asList(loc).indexOf(location2))*10;
@@ -82,6 +86,7 @@ public class Booking {
         in.close();
         return true;
     }
+   
 
     public void showBooking(){
         System.out.println("\t\tBooking Details: ");
