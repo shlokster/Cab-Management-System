@@ -62,7 +62,7 @@ public class MainClass {
 	    if(b.isDriver()) {
 	    	System.out.print("Please enter the rating after the trip : ");
 	    	float drating = myObj2.nextFloat();
-	    	a.setRating(drating, b.driverno);  
+	    	a.setRating(drating, b.getDriverNo());  
 	    }
 	    
 	    myObj1.close();
