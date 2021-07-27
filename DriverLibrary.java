@@ -14,12 +14,12 @@ public class DriverLibrary {
 			int count = 0;
 
 			FileReader fr = new FileReader(filename);
-			BufferedReader br = new BufferedReader(fr);
+			BufferedReader br = new BufferedReader(fr);//reads the file line by line
 
 			while ((br.readLine() != null)) {
 
 				String data = br.readLine();
-				String[] records = data.split("[,]");
+				String[] records = data.split("[,]");//identifies the comma delimiter and split the row into fields
 				int driverID = Integer.parseInt(records[0]);
 				String name = records[1], location = records[2], type = records[3];
 				long PhNum = Long.parseLong(records[4]);
