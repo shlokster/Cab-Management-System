@@ -1,14 +1,3 @@
-//Methods:
-//        Void - makeBooking()
-//        Double getDistance()
-//        Int getTime() --??
-//        Void setLocation()
-//        Boolean isDriver() - random func if time > 01:30 am
-//        void showBooking
-//
-//        Variables:
-//        Int time , bookingId
-//        string location, loc[], String type of car,
 import java.awt.print.Book;
 import java.io.IOException;
 import java.util.*;
