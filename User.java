@@ -98,10 +98,10 @@ public class User
 
 	} 
 	
-	public static void main(String[] args) {
-		User obj=new User("shlok@123","shlok123","Shlok",18,961960366,false);
-		obj.logIn();
-		System.out.println(obj.check());
-	}
+//	public static void main(String[] args) {
+//		User obj=new User("shlok@123","shlok123","Shlok",18,961960366,false);
+//		obj.logIn();
+//		System.out.println(obj.check());
+//	}
 	
 } 
