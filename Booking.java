@@ -18,34 +18,34 @@ public class Booking {
     private String loc[] = { "Liverpool", "Manchester", "Cambridge", "Oxford", "Brighton"};
     public Driver[] drivers;
 
-    public Booking(String filename){
+    public Booking(String filename){            //gets array of drivers from DriverLibrary.java
         DriverLibrary d1 = new DriverLibrary(filename);
         numOfDrivers = d1.getnumOfDrivers();
         drivers = Arrays.copyOfRange(d1.getDrivers(), 0, 25);
     }
     
-    public int getDriverNo(){
+    public int getDriverNo(){                   //gets index of driver assigned
         return this.driverno;
     }
 
-    public double getDistance(){
+    public double getDistance(){                //gets distance travelled from pickup to dropoff
         return Math.abs(Arrays.asList(loc).indexOf(location1) - Arrays.asList(loc).indexOf(location2))*10;
     }
 
-    public void setLocation(){
+    public void setLocation(){                  //calls setLoc() to change driver location after ride
         drivers[driverno].setLoc(location2);
     }
 
-    private void setBookingID(){
+    private void setBookingID(){                //generates unique Booking ID each ride
         bookingID = UUID.randomUUID().toString();
     }
 
-    public boolean isDriver(String location1){
-        int i;
+    public boolean isDriver(String location1){      //checks if driver is available at
+        int i;                                      //given location with given carType
 
         for(i =0; i< numOfDrivers; i++){
-            if(drivers[i].getLocation() == location1 && //checks if driver is available at
-                    drivers[i].getCarType() == carType)  //given location with given carType
+            if(drivers[i].getLocation() == location1 && 
+                    drivers[i].getCarType() == carType)  
             {
                 driverno = i;
                 break;
@@ -88,7 +88,7 @@ public class Booking {
     }
    
 
-    public void showBooking(){
+    public void showBooking(){                  //displays booking details
         System.out.println("\t\tBooking Details: ");
         System.out.println("**********************************");
         System.out.println("Booking ID: " + bookingID);
