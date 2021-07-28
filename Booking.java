@@ -29,26 +29,27 @@ public class Booking {
         bookingID = UUID.randomUUID().toString();
     }
 
-    public boolean isDriver(String location1){      //checks if driver is available at
-        int i;                                      //given location with given carType
+    public boolean isDriver(String location1){
+        int i;
+        for(i = 0; i< numOfDrivers; i++){
 
-        for(i =0; i< numOfDrivers; i++){
-            if(drivers[i].getLocation() == location1 && 
-                    drivers[i].getCarType() == carType)  
+            if((drivers[i].getLocation()).equals(location1) && //checks if driver is available at
+                    (drivers[i].getCarType()).equals(carType))  //given location with given carType
             {
                 driverno = i;
-                break;
-            }
-        if(i == drivers.length){
+                System.out.println("Booking successful!");
+                return true;
+            }}
+
+        if(i == numOfDrivers){
             System.out.println("Driver unavailable, please try again later.");
             return false;
-        }}
+        }
         if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
                                                 //availability at early hours
             if(Math.random()>=0.75)
                 return false;
         }
-        System.out.println("Booking successful!");
         return true;
     }
 
@@ -64,7 +65,7 @@ public class Booking {
         System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
         location2 = in.next();
         System.out.println("Enter type of car: ");
-        carType = in.nextLine();
+        carType = in.next();
         isDriver(location1);
         if(isDriver(location1))
         {
