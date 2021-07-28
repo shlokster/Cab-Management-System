@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,12 +13,12 @@ public class DriverLibrary {
 			int count = 0;
 
 			FileReader fr = new FileReader(filename);
-			BufferedReader br = new BufferedReader(fr);//reads the file line by line
+			BufferedReader br = new BufferedReader(fr); //reads the file line by line
 
 			while ((br.readLine() != null)) {
 
 				String data = br.readLine();
-				String[] records = data.split("[,]");//identifies the comma delimiter and split the row into fields
+				String[] records = data.split("[,]"); //identifies the comma delimiter and split the row into fields
 				int driverID = Integer.parseInt(records[0]);
 				String name = records[1], location = records[2], type = records[3];
 				long PhNum = Long.parseLong(records[4]);
@@ -47,5 +46,9 @@ public class DriverLibrary {
 		return numOfDrivers;
 	}
 
+	public static void main(String[] args) {
+		DriverLibrary d1 = new DriverLibrary("Driver.csv");
+		System.out.println(d1.getDrivers()[5].getName());
+	}
 
 }
