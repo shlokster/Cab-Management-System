@@ -1,4 +1,6 @@
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Scanner; 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;  
@@ -11,60 +13,55 @@ public class User
 	private int age;
 	private long PhNum;
 	private Boolean gender;
+
+	String filename;
+	User[] userList = new User[1000];
+	String fileHeader;
+	boolean blankFile = true;
+	int userCount = 0;
+		
+	public User(String sfilename) {
+		filename = sfilename;
+		buildUserList();
+	}
 	
-	private static String a,b,c;
-	private static int d;
-	private static long e;
-	private static Boolean f;
-//	
-//	String filename;
-//	User[] userList = new User[1000];
-//	String fileHeader;
-//	boolean blankFile = true;
-//	int userCount = 0;
-//		
-//	public User(String sfilename) {
-//		filename = sfilename;
-//		buildUserList();
-//	}
-//	
-//
-//	private void buildUserList() {		
-//		
-//		File myObj = new File(filename);      
-//		Scanner myReader;       
-//		  
-//		int i =-1;
-//		
-//		try {
-//			myReader = new Scanner(myObj);
-//			String Header = myReader.nextLine();
-//			Scanner lineScanner1 = new Scanner(Header);  
-//			
-//			fileHeader = lineScanner1.next();
-//			lineScanner1.close();
-//			
-//			
-//			while (myReader.hasNextLine()) {
-//				blankFile = false;				
-//				String data = myReader.nextLine();
-//				
-//				Scanner lineScanner = new Scanner(data);
-//				lineScanner.useDelimiter(",");
-//				
-//				while(lineScanner.hasNext()) {
-//					    i++;
-//						userList[i]= new User(lineScanner.next(),lineScanner.next(),lineScanner.next(),lineScanner.nextInt(),lineScanner.nextLong(),lineScanner.nextBoolean());	
-//					}
-//				lineScanner.close();
-//			}
-//			userCount = i+1;
-//			myReader.close();
-//				
-//			} catch (FileNotFoundException e) {
-//			e.printStackTrace();    
-//		}
-//	}
+
+	private void buildUserList() {		
+		
+		File myObj = new File(filename);      
+		Scanner myReader;       
+		  
+		int i =-1;
+		
+		try {
+			myReader = new Scanner(myObj);
+			String Header = myReader.nextLine();
+			Scanner lineScanner1 = new Scanner(Header);  
+			
+			fileHeader = lineScanner1.next();
+			lineScanner1.close();
+			
+			
+			while (myReader.hasNextLine()) {
+				blankFile = false;				
+				String data = myReader.nextLine();
+				
+				Scanner lineScanner = new Scanner(data);
+				lineScanner.useDelimiter(",");
+				
+				while(lineScanner.hasNext()) {
+					    i++;
+						userList[i]= new User(lineScanner.next(),lineScanner.next(),lineScanner.next(),lineScanner.nextInt(),lineScanner.nextLong(),lineScanner.nextBoolean());	
+					}
+				lineScanner.close();
+			}
+			userCount = i+1;
+			myReader.close();
+				
+			} catch (FileNotFoundException e) {
+			e.printStackTrace();    
+		}
+	}
 		
 	public User(String email, String password, String name, int age, long PhNum,Boolean gender ) {
 		this.email= email;
@@ -136,13 +133,7 @@ public class User
 				String[] UserList = line.split(splitBy);    // use comma as separator  
 				if( UserList[1].equalsIgnoreCase(getEmail()) && UserList[2].equals(getPassword())) {
 					present++;
-				a = UserList[0];
-				b=UserList[1];
-				c=UserList[2];
-				d = Integer.parseInt(UserList[3]);
-				System.out.println(d);
-				e= Long.parseLong(UserList[4]);
-				f=Boolean.parseBoolean(UserList[5]);	
+					createObject(getEmail(),getPassword());
 				}
 				else
 					continue;
@@ -161,11 +152,25 @@ public class User
 
 	} 
 	
+
+	public void createObject(String email,String password) {    
+		for(int i=0;i<userCount;i++) {
+			if(email==userList[i].getEmail() && password==userList[i].getPassword() ) {
+				User u1 = new User(userList[i].getEmail(),userList[i].getPassword(),userList[i].getName(),userList[i].getAge(),userList[i].getPhNum(),userList[i].getGender());
+				userList[i] = u1;
+				break;
+			}   
+		}
+		
+	}
+	
+	
 	public static void main(String[] args) {
-		User obj=new User(a,b,c,d,e,f);
-		obj.logIn();
-		System.out.println(obj.check());
-		System.out.println(obj.getAge());
+//		User obj=new User("S","s","s",18,191293,false);
+//		User obj1=new User("C:\\Users\\Shlok\\Downloads\\Cab-Management-System-main\\Cab-Management-System-main\\User.csv");
+//		obj.logIn();
+//		System.out.println(obj.check());
+//		System.out.println(obj.getAge());
 	}
 	
 } 
