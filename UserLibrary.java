@@ -84,8 +84,7 @@ public class UserLibrary extends User{
 		int i;
 		int c=-1;
 		for(i=0;i<rowCount;i++) {
-				{ 
-					
+				{ 					
 					if((u[i].uemail.equalsIgnoreCase(email)) && (u[i].upassword.equals(password)) ) {
 						
 						UserObj = u[i];  
