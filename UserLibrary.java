@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class UserLibrary {
+public class UserLibrary extends User{
 	public User[] u = new User[100];
 	public User UserObj = new User();
 	public int rowCount = 0;
@@ -75,7 +75,7 @@ public class UserLibrary {
 				
 			}
 		else
-			System.out.print("LOGIN SUCCESSFUL \n The User array has been created : \n");
+			System.out.print("LOGIN SUCCESSFUL \nThe User array has been created : \n");
 			return UserObj;
 	}
 	
@@ -89,19 +89,42 @@ public class UserLibrary {
 		System.out.println(UserObj.ugender);
 	}
 		
+	
+	public void logIn() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the email : \n");
+		uemail = sc.nextLine();      
+		System.out.print("Enter your password : \n");
+		upassword = sc.nextLine(); 
+		sc.close();
+		createObject(uemail,upassword);
+	}
+	
+	public void register() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter Name: ");
+		uname = scan.nextLine();
+		System.out.println("Enter Email Id: ");
+		uemail = scan.nextLine();
+		System.out.println("Enter Password: ");
+		upassword = scan.nextLine();
+		System.out.println("Enter Age: ");
+		uage  = scan.nextInt();
+		System.out.println("Enter Phone Number: ");
+		uPhNum  = scan.nextLong();
+		System.out.println("Enter Gender:");
+		ugender = scan.nextBoolean();
+		scan.close();
+	}
+
 public static void main(String[] args) {
 		
 		UserLibrary u1 = new UserLibrary();  
-		u1.userLibrary("User.csv");
 		
-		System.out.print("Enter the email : \n");
-		Scanner sc = new Scanner(System.in);
-		String x = sc.nextLine();      
-		System.out.print("Enter your password : \n");
-		String y = sc.nextLine(); 
-		u1.createObject(x,y);
+		u1.userLibrary("User.csv");
+		u1.logIn();
 		u1.printUser();
-		sc.close();
+		
 	}
 	
 }

@@ -1,6 +1,3 @@
-
-import java.util.Scanner;  
-
 public class User 
 {  
 	
@@ -20,10 +17,10 @@ public class User
 		}
 	
 	
-	public User(String email, String password, String name, int age, long PhNum,Boolean gender) {
+	public User( String name, String email, String password, int age, long PhNum,Boolean gender) {
+		uname=name;
 		uemail= email;
 		upassword=password;
-		uname=name;
 		uage=age;
 		uPhNum=PhNum;
 		ugender=gender;
@@ -47,8 +44,6 @@ public class User
 	public Boolean getGender() {
 		return ugender;
 	}
-	
-
 	
 		
 }
