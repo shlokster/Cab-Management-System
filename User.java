@@ -75,9 +75,6 @@ public class User
 		scan.close();
 	}
 
-	@Override
-	public String toString() {
-		return "Email: "+uemail+"\nPassword: "+upassword+"\nName: "+uname;
-	}
+	
 		
 }
