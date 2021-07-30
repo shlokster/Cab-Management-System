@@ -14,14 +14,11 @@ public class UserLibrary extends User{
 	public User UserObj = new User();
 	public int rowCount = 0;
 	public UserLibrary(){}
-	public String filename="User.csv";
+	public String filename="C:\\Users\\Shlok\\eclipse-workspace\\Project\\src\\User.csv";
 
 	public void userLibrary(String filename) {
 		
-		URL path = UserLibrary.class.getResource("User.csv");
-		
-		String fname = path.getPath();
-		File myObj = new File(fname);      
+		File myObj = new File(filename);      
 		Scanner myReader;  
 		
 		int i =-1;
@@ -73,7 +70,7 @@ public class UserLibrary extends User{
 				csvWriter.flush();
 				csvWriter.close();
 				}  
-			
+		
 			
 		} catch (IOException e) {  
 			// TODO Auto-generated catch block
