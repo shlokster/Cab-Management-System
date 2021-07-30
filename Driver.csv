@@ -23,4 +23,3 @@ driverID,name,location,type,PhNum,age,cabID,gender,rating
 22,Bruno,Cambridge,Mini,9000123483,30,3543,false,4.1
 23,Kanye,Cambridge,Sedan,8764527422,32,6996,false,3.5
 24,Cole,Cambridge,Mini,9100201102,26,2143,false,2.9
-25,Justin,Cambridge,Sedan,9876543210,26,7542,false,3.1
