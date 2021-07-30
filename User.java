@@ -48,32 +48,6 @@ public class User
 		return ugender;
 	}
 	
-	public void logIn() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter email: ");
-		uemail = sc.nextLine();
-		System.out.println("Enter password: ");
-		upassword = sc.nextLine();
-		sc.close();
-		
-	}
-	
-	public void register() {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter Name: ");
-		uname = scan.nextLine();
-		System.out.println("Enter Email Id: ");
-		uemail = scan.nextLine();
-		System.out.println("Enter Password: ");
-		upassword = scan.nextLine();
-		System.out.println("Enter Age: ");
-		uage  = scan.nextInt();
-		System.out.println("Enter Phone Number: ");
-		uPhNum  = scan.nextLong();
-		System.out.println("Enter Gender:");
-		ugender = scan.nextBoolean();
-		scan.close();
-	}
 
 	
 		
