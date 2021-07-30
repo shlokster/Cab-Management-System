@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -13,7 +14,7 @@ public class UserLibrary extends User{
 	public User UserObj = new User();
 	public int rowCount = 0;
 	public UserLibrary(){}
-	
+	public String filename="User.csv";
 
 	public void userLibrary(String filename) {
 		
@@ -55,16 +56,46 @@ public class UserLibrary extends User{
 		}
 	}
 	
+	public void addUser(String name, String email, String password, int age, long PhNum, boolean gender) { 
+		
+		rowCount++;
+		rowCount++;
+		u[rowCount] = new User(name,email,password,age,PhNum,gender);
+		reWritefile("ADD");
+	}
+	
+	private void reWritefile(String modifier) {
+				
+		try {
+			if (modifier.equals("ADD")) {
+				FileWriter csvWriter = new FileWriter(filename,true);
+				csvWriter.append(u[rowCount].getName()+","+u[rowCount].getEmail()+","+u[rowCount].getPassword()+","+u[rowCount].getAge()+","+u[rowCount].getPhNum()+","+u[rowCount].getGender()+"\n");
+				csvWriter.flush();
+				csvWriter.close();
+				}  
+			
+			
+		} catch (IOException e) {  
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
+	
+	
 	public User createObject(String email,String password) {
 		
 		int i;
 		int c=-1;
 		for(i=0;i<rowCount;i++) {
-				{ 
+				{ if(i==0) {
+					System.out.print(u[i].getName());
+				}
+					
 					if((u[i].uemail.equalsIgnoreCase(email)) && (u[i].upassword.equals(password)) ) {
 						
 						UserObj = u[i];  
 						c++;
+					
 						break;
 					
 				}
@@ -115,6 +146,7 @@ public class UserLibrary extends User{
 		System.out.println("Enter Gender:");
 		ugender = scan.nextBoolean();
 		scan.close();
+		addUser(uname,uemail,upassword,uage,uPhNum,ugender);
 	}
 
 public static void main(String[] args) {
@@ -122,8 +154,8 @@ public static void main(String[] args) {
 		UserLibrary u1 = new UserLibrary();  
 		
 		u1.userLibrary("User.csv");
-		u1.logIn();
-		u1.printUser();
+		u1.register();
+		
 		
 	}
 	
