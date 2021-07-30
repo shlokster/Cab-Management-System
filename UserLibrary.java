@@ -1,49 +1,157 @@
-package Cab;
-
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.Scanner;
 
-public class UserLibrary {
-	private User[] Users = new User[100];
+public class UserLibrary extends User{
+	public User[] u = new User[100];
+	public User UserObj = new User();
+	public int rowCount = 0;
 	public UserLibrary(){}
-	private int numOfUsers;
-	public UserLibrary(String filename) {
+	public String filename="C:\\Users\\Shlok\\eclipse-workspace\\Project\\src\\User.csv";
 
+	public void userLibrary(String filename) {
+		
+		File myObj = new File(filename);      
+		Scanner myReader;  
+		
+		int i =-1;
+		
 		try {
-			int count = 0;
-
-			FileReader fr = new FileReader(filename);
-			BufferedReader br = new BufferedReader(fr);//reads the file line by line
-
-			while ((br.readLine() != null)) {
-
-				String data = br.readLine();
-				String[] records = data.split("[,]");//identifies the comma delimiter and split the row into fields
-				int age = Integer.parseInt(records[3]);
-				String name = records[0], email = records[1], password = records[2];
-				long PhNum = Long.parseLong(records[4]);
-				boolean gender = Boolean.parseBoolean(records[5]);
-
-				Users[count] = new User(name, email, password,age,PhNum, gender);
-				count++;
-				numOfUsers = count;
-
+			myReader = new Scanner(myObj);
+			myReader.nextLine();
+			
+			while (myReader.hasNextLine()) {
+				
+				String data = myReader.nextLine();
+				
+				Scanner lineScanner = new Scanner(data);
+				lineScanner.useDelimiter(",");
+				
+				while(lineScanner.hasNext()) {
+					    i++;
+						u[i]= new User();
+						u[i].uname = lineScanner.next();
+						u[i].uemail = lineScanner.next();
+						u[i].upassword = lineScanner.next();  
+						u[i].uage = lineScanner.nextInt();
+						u[i].uPhNum = lineScanner.nextLong();
+						u[i].ugender = lineScanner.nextBoolean();
+					}
+				lineScanner.close();
 			}
-			br.close();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
+			myReader.close();
+			rowCount = i+1;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();    
 		}
+	}
 	
+	public void addUser(String name, String email, String password, int age, long PhNum, boolean gender) { 
+		
+		rowCount++;
+		rowCount++;
+		u[rowCount] = new User(name,email,password,age,PhNum,gender);
+		reWritefile("ADD");
 	}
-	public User[] getUsers() {
-		return Arrays.copyOf(Users, 10);
+	
+	private void reWritefile(String modifier) {
+				
+		try {
+			if (modifier.equals("ADD")) {
+				FileWriter csvWriter = new FileWriter(filename,true);
+				csvWriter.append(u[rowCount].getName()+","+u[rowCount].getEmail()+","+u[rowCount].getPassword()+","+u[rowCount].getAge()+","+u[rowCount].getPhNum()+","+u[rowCount].getGender()+"\n");
+				csvWriter.flush();
+				csvWriter.close();
+				}  
+		
+			
+		} catch (IOException e) {  
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+	}
+	
+	
+	public User createObject(String email,String password) {
+		
+		int i;
+		int c=-1;
+		for(i=0;i<rowCount;i++) {
+				{ 
+					
+					if((u[i].uemail.equalsIgnoreCase(email)) && (u[i].upassword.equals(password)) ) {
+						
+						UserObj = u[i];  
+						c++;
+					
+						break;
+					
+				}
+			}
+		}
+		if (c==-1)
+			{System.out.print("LOGIN UNSUCCESSFUL\n\n");
+				
+			}
+		else
+			System.out.print("LOGIN SUCCESSFUL \nThe User Object has been created : \n");
+			return UserObj;
+	}
+	
+	public void printUser()
+	{
+		System.out.println(UserObj.uname);
+		System.out.println(UserObj.uemail);
+		System.out.println(UserObj.upassword);
+		System.out.println(UserObj.uage);
+		System.out.println(UserObj.uPhNum);
+		System.out.println(UserObj.ugender);
+	}
+		
+	
+	public void logIn() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the email : \n");
+		uemail = sc.nextLine();      
+		System.out.print("Enter your password : \n");
+		upassword = sc.nextLine(); 
+		sc.close();
+		createObject(uemail,upassword);
+	}
+	
+	public void register() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter Name: ");
+		uname = scan.nextLine();
+		System.out.println("Enter Email Id: ");
+		uemail = scan.nextLine();
+		System.out.println("Enter Password: ");
+		upassword = scan.nextLine();
+		System.out.println("Enter Age: ");
+		uage  = scan.nextInt();
+		System.out.println("Enter Phone Number: ");
+		uPhNum  = scan.nextLong();
+		System.out.println("Enter Gender:");
+		ugender = scan.nextBoolean();
+		scan.close();
+		addUser(uname,uemail,upassword,uage,uPhNum,ugender);
 	}
 
-	public int getnumOfUsers(){
-		return numOfUsers;
+public static void main(String[] args) {
+		
+		UserLibrary u1 = new UserLibrary();  
+		
+		u1.userLibrary("User.csv");
+		u1.register();
+		
+		
 	}
-
-
+	
 }
