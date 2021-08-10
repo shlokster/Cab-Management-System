@@ -1,4 +1,4 @@
-package Cab;
+//package Cab;
 
 import java.util.*;
 public class Booking {
@@ -7,6 +7,7 @@ public class Booking {
     private String loc[] = { "Liverpool", "Manchester", "Cambridge", "Oxford", "Brighton"};
     public Driver[] drivers;
     DriverLibrary d2;
+    private boolean status = false;
 
     public Booking(String filename, DriverLibrary d1){            //gets array of drivers from DriverLibrary.java
         //DriverLibrary d1 = new DriverLibrary("C:\\Users\\Annant Maheshwari\\eclipse-workspace\\JAVA\\src\\Cab\\Driver.csv");
@@ -48,6 +49,7 @@ public class Booking {
             {
                 driverno = i;
                 System.out.println("Booking successful!");
+                status = true;
                 return true;
             }}
 
@@ -57,8 +59,7 @@ public class Booking {
         }
         if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
                                                 //availability at early hours
-            if(Math.random()>=0.75)
-                return false;
+            return !(Math.random() >= 0.75);
         }
         return true;
     }
@@ -66,6 +67,10 @@ public class Booking {
     public void updateDriverNum() {
     	DriverLibrary d2 = new DriverLibrary();
     	d2.updateDriverNum();
+    }
+
+    public Boolean getStatus(){
+        return status;
     }
 
 
@@ -106,7 +111,11 @@ public class Booking {
     
 
 
-    public String getlocation1() {
-        return location1;
-    }
+//    public String getlocation1() {
+//        return location1;
+//    }
+//
+//    public String getlocation2() {
+//        return location2;
+//    }
 }
