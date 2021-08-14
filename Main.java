@@ -1,4 +1,4 @@
-package Cab;
+//package Cab;
 
 
 
@@ -10,12 +10,12 @@ import java.util.Scanner;
 		System.out.println("1.User");
 		System.out.println("2.Admin");
 		int choice1;
-		DriverLibrary d = new DriverLibrary("C:\\Users\\Annant Maheshwari\\eclipse-workspace\\JAVA\\src\\Cab\\Driver.csv");
-		Booking b1 = new Booking("C:\\Users\\Annant Maheshwari\\eclipse-workspace\\JAVA\\src\\Cab\\Driver.csv",d);
-		Admin a = new Admin("C:\\Users\\Annant Maheshwari\\eclipse-workspace\\JAVA\\src\\Cab\\Driver.csv");
+		DriverLibrary d = new DriverLibrary("Driver.csv");
+		Booking b1 = new Booking("Driver.csv",d);
+		Admin a = new Admin("Driver.csv");
 		
 		UserLibrary u0 = new UserLibrary();
-		u0.userLibrary("C:\\Users\\Annant Maheshwari\\eclipse-workspace\\JAVA\\src\\Cab\\User.csv");
+		u0.userLibrary("User.csv");
 		Scanner sc = new Scanner(System.in);
 		
 		
@@ -27,7 +27,7 @@ import java.util.Scanner;
 			System.out.println("Press 1 for Login and 2 for Register");
 			choice2=sc.nextInt();
 			
-			/*if(choice2==1) {
+			if(choice2==1) {
 				System.out.print("Enter the email : \n");
 				u0.uemail = sc.next();      
 				System.out.print("Enter your password : \n");
@@ -49,7 +49,7 @@ import java.util.Scanner;
 				System.out.println("Enter Gender:");
 				u0.ugender = sc.nextBoolean();
 				u0.register();
-			}*/
+			}
 			
 			
 			Scanner in = new Scanner(System.in); 
@@ -65,7 +65,7 @@ import java.util.Scanner;
 	        System.out.println("Enter type of car: ");
 	        String carType = in.next();
 	        b1.createBooking(time, location1, location2, carType);
-	        b1.isDriver(location1);
+//	        b1.isDriver(location1);
 	        if(b1.isDriver(location1))  
 	        {
 	            b1.setBookingID();
@@ -74,16 +74,17 @@ import java.util.Scanner;
 	            System.out.print("Your fare for this ride is : ");		
 				System.out.print(a.getReceipt(b1.getDistance()));
 	        }
+			if(b1.getStatus()) {
+				System.out.print("\nPlease enter the rating after the trip : ");
+				float drating = in.nextFloat();
+				a.setRating(drating, b1.getDriverNo());
+			}
 	        in.close();
 		}
-	        
 			
-			
-		
-		
-	        else if(choice1==2){
-			
-			
+
+		else if(choice1==2){
+
 			Scanner myObj = new Scanner(System.in);
 			Scanner myObj1 = new Scanner(System.in);
 			Scanner myObj2 = new Scanner(System.in);
@@ -134,11 +135,7 @@ import java.util.Scanner;
 			    a.deleteDriver(dID);  
 		    }  
 		    	 
-		    if(b1.isDriver(b1.getlocation1())) {
-		    	System.out.print("Please enter the rating after the trip : ");
-		    	float drating = myObj2.nextFloat();
-		    	a.setRating(drating, b1.getDriverNo());      
-		    }
+
 		    
 		    sc.close();
 		    
@@ -151,6 +148,4 @@ import java.util.Scanner;
 		
 		}
 	}
-
-	
 
