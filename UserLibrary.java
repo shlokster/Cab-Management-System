@@ -1,4 +1,14 @@
-
+/*
+ *		double getReceipt()			Calculate the fare of the trip
+ * 		void userlibrary()			Creates a list of drivers
+ * 		void addUser()				Adds a driver to the CSV file
+ * 		void reWritefile()			Method to update the CSV file with the values
+ * 		int createObject()			Creates a user onject and loads its values in the User constructor
+ * 		Boolean getStatus()			To check if user wants to book a ride or not
+ * 		void printDetails()			Prints all the information of the current user object
+ *		void logIn()				To input the usercreditionals are create its object
+ *		void register()				To create a new user
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
