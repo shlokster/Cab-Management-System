@@ -32,7 +32,7 @@ public class DriverLibrary {
 				long PhNum = Long.parseLong(records[4]);
 				int age = Integer.parseInt(records[5]);
 				int cabID = Integer.parseInt(records[6]);
-				boolean gender = Boolean.parseBoolean(records[7]);
+				String gender = records[7];
 				float rating = Float.parseFloat(records[8]);
 				
 				

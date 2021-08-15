@@ -39,11 +39,8 @@ public class UserLibrary extends User{
 						u[i].upassword = lineScanner.next();  
 						u[i].uage = Integer.parseInt(lineScanner.next());
 						u[i].uPhNum = lineScanner.nextLong();
-						String gen = lineScanner.next();
-						if(gen.equals("true")) {
-						u[i].ugender = true;  }
-						else {
-						u[i].ugender = false;  }
+						u[i].ugender = lineScanner.next();
+						
 							
 					}
 				
@@ -57,7 +54,7 @@ public class UserLibrary extends User{
 		}
 	}
 	
-	public void addUser(String name, String email, String password, int age, long PhNum, boolean gender) { 
+	public void addUser(String name, String email, String password, int age, long PhNum, String gender) { 
 		
 		rowCount++;
 		rowCount++;
@@ -70,7 +67,7 @@ public class UserLibrary extends User{
 		try {
 			if (modifier.equals("ADD")) {
 				FileWriter csvWriter = new FileWriter(filename,true);
-				csvWriter.append(u[rowCount].getName()+","+u[rowCount].getEmail()+","+u[rowCount].getPassword()+","+u[rowCount].getAge()+","+u[rowCount].getPhNum()+","+u[rowCount].getGender()+"\n");
+				csvWriter.append(u[rowCount].getName()+","+u[rowCount].getEmail()+","+u[rowCount].getPassword()+","+u[rowCount].getAge()+","+u[rowCount].getPhNum()+","+u[rowCount].getGenderU()+"\n");
 				csvWriter.flush();
 				csvWriter.close();
 				}  
@@ -127,26 +124,29 @@ public class UserLibrary extends User{
 		System.out.println(UserObj.ugender);
 		
 	}
-		
+	
+	public String getUserGender() {
+		return UserObj.ugender;
+	}
 	
 	public void logIn(String uemail, String upassword) {
 		createObject(uemail,upassword);  
 	}  
 	
-	public void register(String uname, String uemail, String upassword, int uage, long uPhNum, boolean ugender) {
+	public void register(String uname, String uemail, String upassword, int uage, long uPhNum, String ugender) {
 		addUser(uname,uemail,upassword,uage,uPhNum,ugender);
 		status=true;
 	}
 
-//	public static void main(String[] args) {
-//		
-//		UserLibrary u1 = new UserLibrary();  
-//		
-//		u1.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv"); 
-//		u1.logIn();
-//		u1.printUser();
-//		
-//		
-//	}
+	public static void main(String[] args) {
+		
+		UserLibrary u1 = new UserLibrary();  
+		
+		u1.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv"); 
+		u1.logIn("vanessa@gmail.com","Vanessa123");
+		u1.printUser();
+		
+		
+	}
 	
 }

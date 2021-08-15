@@ -1,4 +1,3 @@
-//package Cab;
 
 import java.util.*;
 public class Booking {
@@ -44,6 +43,9 @@ public class Booking {
         bookingID = UUID.randomUUID().toString();
     }
     
+    public String getDriverGen() {
+    	return "F";
+    }
     
     public boolean isDriver(String location1){
         int i;
@@ -78,29 +80,29 @@ public class Booking {
         return status;
     }
 
-//        	public boolean isFemaleDriver(String location1){
-//             int i;
-//             for(i = 0; i< numOfDrivers; i++){
+    public Boolean isFemaleDriver(String location1){
+             int i;
+             for(i = 0; i< numOfDrivers; i++){
 
-//                 if((drivers[i].getLocation()).equals(this.location1) && //checks if driver is available at
-//                         (drivers[i].getCarType()).equals(carType) && drivers[i].getGender()==true)  //given location with given carType
-//                 {
-//                     driverno = i;
-//                     System.out.println("Booking successful!");
-//                     status = true;
-//                     return true;
-//                 }}
+                 if((drivers[i].getLocation()).equals(this.location1) && //checks if driver is available at
+                         (drivers[i].getCarType()).equals(carType) && (drivers[i].getGender()).equals("F"))  //given location with given carType
+                 {
+                     driverno = i;
+                     System.out.println("Booking successful!");
+                     status = true;
+                     return true;
+                 }}
 
-//             if(i == numOfDrivers){
-//                 System.out.println("Driver unavailable, please try again later.");
-//                 return false;
-//             }
-//             if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
-//                                                     //availability at early hours
-//                 return !(Math.random() >= 0.75);
-//             }
-//             return true;
-//        	}
+             if(i == numOfDrivers){
+                 
+                 return false;
+             }
+             if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
+                                                     //availability at early hours
+                 return !(Math.random() >= 0.75);
+             }
+             return true;
+        	}
 
 //    public boolean makeBooking(){       //gets booking details, calls isDriver(), showBooking(), setLoc()
 //        System.out.println("Enter time of travel: ");
@@ -147,4 +149,3 @@ public class Booking {
 //        return location2;
 //    }
 }
-

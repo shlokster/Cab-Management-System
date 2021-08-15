@@ -18,12 +18,12 @@ public class Driver {
 	private final long PhNum;
 	private final int age;
 	private final int cabID;
-	private final boolean gender;
+	private final String gender;
 	private final float rating;
 	// private driver[] drivers;
 
-	public Driver(int driverID, String name, String location, String type, long PhNum, int age, int cabID,
-			boolean gender, float rating) {
+	public Driver(int driverID, String name, String location, String type, long PhNum, int age, int cabID, 
+			String gender, float rating) {
 
 		this.driverID = driverID;
 		this.name = name;
@@ -67,14 +67,15 @@ public class Driver {
 		return cabID;
 
 	}
-        public void setLoc(String location2) {
+        
+	public void setLoc(String location2) {
         location = location2;
         }
 
 	public float getRating() {
 		return rating;
 	}
-	public boolean getGender(){
+	public String getGender(){
 		return gender;
 	}
 

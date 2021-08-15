@@ -1,6 +1,4 @@
 
-package Cab;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -39,7 +37,7 @@ public class Admin {
 	}  
 	
 	public void addDriver(String name, String location, String type, long PhNum, int age, int cabID,
-			boolean gender, float rating) { 
+			String gender, float rating) { 
 		
 		int nextDriverID = NextdriverID(); 	
 	  	driverCount++;
@@ -102,7 +100,7 @@ public class Admin {
 				
 				while(lineScanner.hasNext()) {
 					    i++;
-						driverList[i]= new Driver(lineScanner.nextInt(),lineScanner.next(),lineScanner.next(),lineScanner.next(),lineScanner.nextLong(),lineScanner.nextInt(),lineScanner.nextInt(),lineScanner.nextBoolean(),lineScanner.nextFloat());	
+						driverList[i]= new Driver(lineScanner.nextInt(),lineScanner.next(),lineScanner.next(),lineScanner.next(),lineScanner.nextLong(),lineScanner.nextInt(),lineScanner.nextInt(),lineScanner.next(),lineScanner.nextFloat());	
 					}
 				lineScanner.close();
 			}
@@ -154,7 +152,7 @@ public class Admin {
 	
 	public void printDdetails() {
 		for(int i=0;i<driverCount;i++) {
-			System.out.print(driverList[i].getDriverID()+"\t"+driverList[i].getName());
+			System.out.print(driverList[i].getDriverID()+"\t"+driverList[i].getName()+"\n");
 		}
 	}
 	
