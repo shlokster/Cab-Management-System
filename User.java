@@ -1,3 +1,13 @@
+/*
+ * METHODS :
+ * 		User()					parameterized and defalut constructor constructor
+ * 		getEmail()				returns user's email
+ * 		getPassword()				returns user's password
+ *		getName()				returns user's name
+ *		getAge()				returns user's age
+ *		getPhNum()				returns user's phone number 
+ *		getGender()				returns user's gender  
+ */
 
 public class User 
 {  
