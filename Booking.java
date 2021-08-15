@@ -53,7 +53,7 @@ public class Booking {
                     (drivers[i].getCarType()).equals(carType))  //given location with given carType
             {
                 driverno = i;
-                System.out.println("Booking successful!");
+//                 System.out.println("Booking successful!");
                 status = true;
                 return true;
             }}
