@@ -1,4 +1,6 @@
 
+package Cab;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -30,8 +32,10 @@ public class Admin {
 		buildDriverList();
 	}
 	
-	public double getReceipt(double d) {
-		return d*20;  
+	public double getReceipt(double d,int t) {
+		if(t>=0130 && t<=0430)
+			return d*3;
+		return d*2;  
 	}  
 	
 	public void addDriver(String name, String location, String type, long PhNum, int age, int cabID,
@@ -146,6 +150,12 @@ public class Admin {
 			}   
 		}
 		reWritefile("RATING");
+	}
+	
+	public void printDdetails() {
+		for(int i=0;i<driverCount;i++) {
+			System.out.print(driverList[i].getDriverID()+"\t"+driverList[i].getName());
+		}
 	}
 	
 }
