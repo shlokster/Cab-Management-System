@@ -59,7 +59,7 @@ import java.util.Scanner;
 			    if(checkadd1.equals("Y")) {
 			    	
 			    
-	        System.out.println("Enter time of travel between 0000 and 2359: ");
+			System.out.println("Enter time of travel between 0000 and 2359: ");	        
 	        int time = Integer.parseInt(in.next());    
 	        System.out.println("Enter pickup location from the following: ");
 	        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
@@ -68,11 +68,11 @@ import java.util.Scanner;
 	        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
 	        String location2 = in.next();
 	        System.out.println("Enter type of car from the following: ");
-		System.out.println("*-Sedan\n *-Mini\n *-SUV\n");
-	        String carType = in.next();
+			System.out.println("*-Sedan\n *-Mini\n *-SUV\n");
+			String carType = in.next();
 	        b1.createBooking(time, location1, location2, carType);
 	        
-// 	        b1.isDriver(location1);
+//	        b1.isDriver(location1);
 	        
 //	        if(u0.getGender()==true) {
 //	        	System.out.println("Would you prefer a female driver? (Y/N)");
@@ -107,7 +107,7 @@ import java.util.Scanner;
 	            b1.setBookingID();
 	            b1.showBooking();
 	            b1.setLocation();
-	            System.out.print("Booking Successful!"\n");	
+	            System.out.print("Booking Successful!\n");	
 	            System.out.print("Your fare for this ride is : ");		
 				System.out.print(a.getReceipt(b1.getDistance(),b1.getTime()));
 	        }

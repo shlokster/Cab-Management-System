@@ -1,6 +1,4 @@
 
-package Cab;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -154,7 +152,7 @@ public class Admin {
 	
 	public void printDdetails() {
 		for(int i=0;i<driverCount;i++) {
-			System.out.print(driverList[i].getDriverID()+"\t"+driverList[i].getName());
+			System.out.print(driverList[i].getDriverID()+"\t"+driverList[i].getName()+"\n");
 		}
 	}
 	

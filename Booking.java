@@ -1,4 +1,3 @@
-//package Cab;
 
 import java.util.*;
 public class Booking {
@@ -147,4 +146,3 @@ public class Booking {
 //        return location2;
 //    }
 }
-

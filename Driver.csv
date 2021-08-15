@@ -25,4 +25,3 @@ driverID,name,location,type,PhNum,age,cabID,gender,rating
 24,Cole,Cambridge,Mini,9100201102,26,2143,false,2.9
 25,Justin,Cambridge,Sedan,9876543210,26,7542,false,3.1
 26,class,Liverpool,SUV,98765323,63,3234,true,4.7
-27,Arnold,Liverpool,SUV,9832929224,45,6543,false,4.8
