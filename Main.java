@@ -74,7 +74,7 @@ import java.util.Scanner;
 	        String carType = in.next();
 	        b1.createBooking(time, location1, location2, carType);
 	        
-	        b1.isDriver(location1);
+// 	        b1.isDriver(location1);
 	        
 //	        if(u0.getGender()==true) {
 //	        	System.out.println("Would you prefer a female driver? (Y/N)");
@@ -109,6 +109,7 @@ import java.util.Scanner;
 	            b1.setBookingID();
 	            b1.showBooking();
 	            b1.setLocation();
+		    System.out.print("Booking Successful!!");	
 	            System.out.print("Your fare for this ride is : ");		
 				System.out.print(a.getReceipt(b1.getDistance()));
 	        }
