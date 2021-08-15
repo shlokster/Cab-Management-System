@@ -69,7 +69,8 @@ import java.util.Scanner;
 	        System.out.println("Enter drop-off location from the following: ");
 	        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
 	        String location2 = in.next();
-	        System.out.println("Enter type of car: ");
+	        System.out.println("Enter type of car from the following: ");
+	        System.out.println("*-Mini\n *-Sedan\n *-SUV\n");
 	        String carType = in.next();
 	        b1.createBooking(time, location1, location2, carType);
 	        
