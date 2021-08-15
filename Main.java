@@ -61,7 +61,7 @@ import java.util.Scanner;
 			    if(checkadd1.equals("Y")) {
 			    	
 			    
-	        System.out.println("Enter time of travel: ");
+	        System.out.println("Enter time of travel from 0000 to 2359: ");
 	        int time = Integer.parseInt(in.next());    
 	        System.out.println("Enter pickup location from the following: ");
 	        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
