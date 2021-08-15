@@ -30,6 +30,10 @@ public class Booking {
     public double getDistance(){                //gets distance travelled from pickup to dropoff
         return Math.abs(Arrays.asList(loc).indexOf(location1) - Arrays.asList(loc).indexOf(location2))*10;
     }
+    
+    public int getTime(){
+        return this.time;
+    }
 
     public void setLocation(){                  //calls setLoc() to change driver location after ride
         drivers[driverno].setLoc(location2);
