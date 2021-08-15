@@ -11,7 +11,7 @@ public class UserLibrary extends User{
 	public User UserObj = new User();
 	public int rowCount = 0;
 	public UserLibrary(){}
-	public String filename="C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv";
+	public String filename="C:\\Users\\Shlok\\eclipse-workspace\\Draft1\\src\\User.csv";
 
 	public void userLibrary(String filename) {
 		
@@ -138,15 +138,15 @@ public class UserLibrary extends User{
 		status=true;
 	}
 
-	public static void main(String[] args) {
-		
-		UserLibrary u1 = new UserLibrary();  
-		
-		u1.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv"); 
-		u1.logIn("vanessa@gmail.com","Vanessa123");
-		u1.printUser();
-		
-		
-	}
+//	public static void main(String[] args) {
+//		
+//		UserLibrary u1 = new UserLibrary();  
+//		
+//		u1.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv"); 
+//		u1.logIn("vanessa@gmail.com","Vanessa123");
+//		u1.printUser();
+//		
+//		
+//	}
 	
 }

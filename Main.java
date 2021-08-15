@@ -8,12 +8,12 @@ import java.util.Scanner;
 		System.out.println("Enter 1 for User");
 		System.out.println("Enter 2 for Admin");
 		int choice1;
-		DriverLibrary d = new DriverLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\Driver.csv");
-		Booking b1 = new Booking("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\Driver.csv",d);
-		Admin a = new Admin("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\Driver.csv");
+		DriverLibrary d = new DriverLibrary("C:\\Users\\Shlok\\eclipse-workspace\\Draft1\\src\\Driver.csv");
+		Booking b1 = new Booking("C:\\Users\\Shlok\\eclipse-workspace\\Draft1\\src\\Driver.csv",d);
+		Admin a = new Admin("C:\\Users\\Shlok\\eclipse-workspace\\Draft1\\src\\Driver.csv");
 		
 		UserLibrary u0 = new UserLibrary();
-		u0.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv");
+		u0.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\Draft1\\src\\User.csv");
 		Scanner sc = new Scanner(System.in);
 		
 		choice1 = sc.nextInt();
@@ -30,7 +30,8 @@ import java.util.Scanner;
 				System.out.print("Enter your password : \n");
 				String passwordt = sc.next();    
 				u0.logIn(emailt,passwordt);
-							
+//				System.out.println(u0.getGender());
+				
 			}
 			if(choice2==2) {
 				System.out.println("Enter Name: ");
@@ -71,6 +72,7 @@ import java.util.Scanner;
 			String carType = in.next();
 	        b1.createBooking(time, location1, location2, carType);
 	        
+//	        b1.isDriver(location1);
 	        
 	        if(u0.getUserGender().equals("F")) {
 	        	System.out.println("Would you prefer a female driver? (Y/N)");
@@ -86,7 +88,7 @@ import java.util.Scanner;
 	    				System.out.print(a.getReceipt(b1.getDistance(),b1.getTime()));
 	    	        }
 	    	       
-	        	if(!(b1.isFemaleDriver(location1))) {
+	    	     else {
 	        			System.out.println("Sorry! Female Driver Unavailable. You will be assigned a male driver");
 
 	        	        if(b1.isDriver(location1))  
@@ -100,7 +102,7 @@ import java.util.Scanner;
 	        	        }
 	        		}
 	        	}
-	        	else if((choiceg.equals("N"))) {
+	        	else {
 	        		if(b1.isDriver(location1))  
     	        	{
     	            b1.setBookingID();
@@ -111,8 +113,6 @@ import java.util.Scanner;
     				System.out.print(a.getReceipt(b1.getDistance(),b1.getTime()));
     	        	}
 	        	} 	
-	        	else
-	        		System.out.println("Wrong Choice");
 	        }
 	        
 	        else  //Male User 
@@ -129,18 +129,18 @@ import java.util.Scanner;
         			
 	        	}
 	      	
-	        if(b1.getStatus()) {
+			if(b1.getStatus()) {
 				System.out.print("\nPlease enter the rating after the trip : ");
 				float drating = in.nextFloat();
 				a.setRating(drating, b1.getDriverNo());
 			}
 	        in.close();
 		}
-	}
-}
+		}
+		}
 		
 		
-		else if(choice1==2){	//Admin
+		else if(choice1==2){ //Admin
 
 			Scanner myObj = new Scanner(System.in);
 			Scanner myObj1 = new Scanner(System.in);
@@ -171,7 +171,7 @@ import java.util.Scanner;
 			    System.out.println("Enter the cab id : ");
 			    int cabid = myObj1.nextInt();
 			   	      
-			    System.out.println("Enter gender (true-Female,false-Male) : ");
+			    System.out.println("Enter gender (M/F) : ");
 			    String gender = myObj1.nextLine();
 			         
 			    System.out.println("Enter rating : ");
