@@ -1,10 +1,11 @@
+
 public class User 
 {  
 	
-	public String uemail,upassword,uname;
-	public int uage;
-	public long uPhNum;
-	public Boolean ugender;
+	protected String uemail,upassword,uname;
+	protected int uage;
+	protected long uPhNum;
+	protected Boolean ugender;
 
 	
 	public User() {

@@ -1,20 +1,17 @@
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class UserLibrary extends User{
+	private boolean status=false;
 	public User[] u = new User[100];
 	public User UserObj = new User();
 	public int rowCount = 0;
 	public UserLibrary(){}
-	public String filename="User.csv";
+	public String filename="C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv";
 
 	public void userLibrary(String filename) {
 		
@@ -40,10 +37,17 @@ public class UserLibrary extends User{
 						u[i].uname = lineScanner.next();
 						u[i].uemail = lineScanner.next();
 						u[i].upassword = lineScanner.next();  
-						u[i].uage = lineScanner.nextInt();
+						u[i].uage = Integer.parseInt(lineScanner.next());
 						u[i].uPhNum = lineScanner.nextLong();
-						u[i].ugender = lineScanner.nextBoolean();
+						String gen = lineScanner.next();
+						if(gen.equals("true")) {
+						u[i].ugender = true;  }
+						else {
+						u[i].ugender = false;  }
+							
 					}
+				
+					
 				lineScanner.close();
 			}
 			myReader.close();
@@ -84,14 +88,12 @@ public class UserLibrary extends User{
 		int i;
 		int c=-1;
 		for(i=0;i<rowCount;i++) {
-				{ if(i==0) {
-					System.out.print(u[i].getName());
-				}
+				{ 
 					
 					if((u[i].uemail.equalsIgnoreCase(email)) && (u[i].upassword.equals(password)) ) {
 						
 						UserObj = u[i];  
-						c++;
+						c++;  
 					
 						break;
 					
@@ -102,10 +104,18 @@ public class UserLibrary extends User{
 			{System.out.print("LOGIN UNSUCCESSFUL\n\n");
 				
 			}
-		else
-			System.out.print("LOGIN SUCCESSFUL \nThe User array has been created : \n");
-			return UserObj;
+		else {
+			System.out.print("LOGIN SUCCESSFUL \n");
+			status=true;
+		}
+		return UserObj;
 	}
+	
+
+    public Boolean getStatus(){
+        return status;
+    }
+
 	
 	public void printUser()
 	{
@@ -115,45 +125,28 @@ public class UserLibrary extends User{
 		System.out.println(UserObj.uage);
 		System.out.println(UserObj.uPhNum);
 		System.out.println(UserObj.ugender);
+		
 	}
 		
 	
-	public void logIn() {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter the email : \n");
-		uemail = sc.nextLine();      
-		System.out.print("Enter your password : \n");
-		upassword = sc.nextLine(); 
-		sc.close();
-		createObject(uemail,upassword);
-	}
+	public void logIn(String uemail, String upassword) {
+		createObject(uemail,upassword);  
+	}  
 	
-	public void register() {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter Name: ");
-		uname = scan.nextLine();
-		System.out.println("Enter Email Id: ");
-		uemail = scan.nextLine();
-		System.out.println("Enter Password: ");
-		upassword = scan.nextLine();
-		System.out.println("Enter Age: ");
-		uage  = scan.nextInt();
-		System.out.println("Enter Phone Number: ");
-		uPhNum  = scan.nextLong();
-		System.out.println("Enter Gender:");
-		ugender = scan.nextBoolean();
-		scan.close();
+	public void register(String uname, String uemail, String upassword, int uage, long uPhNum, boolean ugender) {
 		addUser(uname,uemail,upassword,uage,uPhNum,ugender);
+		status=true;
 	}
 
-public static void main(String[] args) {
-		
-		UserLibrary u1 = new UserLibrary();  
-		
-		u1.userLibrary("User.csv");
-		u1.register();
-		
-		
-	}
+//	public static void main(String[] args) {
+//		
+//		UserLibrary u1 = new UserLibrary();  
+//		
+//		u1.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv"); 
+//		u1.logIn();
+//		u1.printUser();
+//		
+//		
+//	}
 	
 }

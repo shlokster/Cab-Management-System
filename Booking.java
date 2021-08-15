@@ -1,15 +1,20 @@
+//package Cab;
+
 import java.util.*;
 public class Booking {
     private int time, driverno, numOfDrivers;
     private String location1, location2, carType, bookingID;
     private String loc[] = { "Liverpool", "Manchester", "Cambridge", "Oxford", "Brighton"};
     public Driver[] drivers;
+    DriverLibrary d2;
+    private boolean status = false;
 
-    public Booking(String filename){            //gets array of drivers from DriverLibrary.java
-        DriverLibrary d1 = new DriverLibrary(filename);
-        numOfDrivers = d1.getnumOfDrivers();
-        drivers = d1.getDrivers();
-    }
+    public Booking(String filename, DriverLibrary d1){            //gets array of drivers from DriverLibrary.java
+        //DriverLibrary d1 = new DriverLibrary("C:\\Users\\Annant Maheshwari\\eclipse-workspace\\JAVA\\src\\Cab\\Driver.csv");
+    	d2 = d1;
+    	numOfDrivers = d1.getnumOfDrivers();
+        drivers = d1.getDrivers();  
+    }  
 
     public void createBooking(int time, String location1, String location2, String carType){
         this.time = time;
@@ -28,12 +33,14 @@ public class Booking {
 
     public void setLocation(){                  //calls setLoc() to change driver location after ride
         drivers[driverno].setLoc(location2);
+        d2.setLoc(location1, driverno);
     }
 
-    private void setBookingID(){                //generates unique Booking ID each ride
+    public void setBookingID(){                //generates unique Booking ID each ride
         bookingID = UUID.randomUUID().toString();
     }
-
+    
+    
     public boolean isDriver(String location1){
         int i;
         for(i = 0; i< numOfDrivers; i++){
@@ -43,6 +50,7 @@ public class Booking {
             {
                 driverno = i;
                 System.out.println("Booking successful!");
+                status = true;
                 return true;
             }}
 
@@ -52,12 +60,43 @@ public class Booking {
         }
         if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
                                                 //availability at early hours
-            if(Math.random()>=0.75)
-                return false;
+            return !(Math.random() >= 0.75);
         }
         return true;
     }
+    
+    public void updateDriverNum() {
+    	DriverLibrary d2 = new DriverLibrary();
+    	d2.updateDriverNum();
+    }
 
+    public Boolean getStatus(){
+        return status;
+    }
+
+       	public boolean isFemaleDriver(String location1){
+            int i;
+            for(i = 0; i< numOfDrivers; i++){
+
+                if((drivers[i].getLocation()).equals(this.location1) && //checks if driver is available at
+                        (drivers[i].getCarType()).equals(carType) && drivers[i].getGender()==true)  //given location with given carType
+                {
+                    driverno = i;
+                    System.out.println("Booking successful!");
+                    status = true;
+                    return true;
+                }}
+
+            if(i == numOfDrivers){
+                System.out.println("Driver unavailable, please try again later.");
+                return false;
+            }
+            if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
+                                                    //availability at early hours
+                return !(Math.random() >= 0.75);
+            }
+            return true;
+       	}
 
 //    public boolean makeBooking(){       //gets booking details, calls isDriver(), showBooking(), setLoc()
 //        System.out.println("Enter time of travel: ");
@@ -93,34 +132,15 @@ public class Booking {
         System.out.println("Distance: " + getDistance());
     }
 
-    public static void main(String[] args) {
-        Booking b1 = new Booking("Driver.csv");
-        System.out.println("Enter time of travel: ");
-        Scanner in = new Scanner(System.in);
-        int time = in.nextInt();
-        System.out.println("Enter pickup location from the following: ");
-        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
-        String location1 = in.next();
-        System.out.println("Enter drop-off location from the following: ");
-        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
-        String location2 = in.next();
-        System.out.println("Enter type of car: ");
-        String carType = in.next();
-        b1.createBooking(time, location1, location2, carType);
-        b1.isDriver(location1);
-        if(b1.isDriver(location1))
-        {
-            b1.setBookingID();
-            b1.showBooking();
-            b1.setLocation();
-        }
-        in.close();
-
-    }
+    
 
 
-    public String getlocation1() {
-        return location1;
-    }
+//    public String getlocation1() {
+//        return location1;
+//    }
+//
+//    public String getlocation2() {
+//        return location2;
+//    }
 }
 

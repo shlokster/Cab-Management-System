@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -22,7 +23,7 @@ public class Admin {
 	Driver[] driverList = new Driver[1000];
 	String fileHeader;
 	boolean blankFile = true;
-	int driverCount = 0;
+	int driverCount = 0;  
 		
 	public Admin(String sfilename) {
 		filename = sfilename;
@@ -102,12 +103,17 @@ public class Admin {
 				lineScanner.close();
 			}
 			driverCount = i+1;
-			myReader.close();
+			myReader.close();  
 				
 			} catch (FileNotFoundException e) {
 			e.printStackTrace();    
 		}
 	}
+	
+	/*private void buildDriverList() {
+		DriverLibrary d1 = new DriverLibrary(filename);
+		driverList = d1.getDrivers();
+	}*/
 	
 	private int NextdriverID() {
 		if (blankFile)
@@ -120,7 +126,7 @@ public class Admin {
 		
 		for(int i=0;i<driverCount;i++) {
 	    	if(driverId==driverList[i].getDriverID()) {
-	    		for(int j=i;j<driverCount-1;j++)
+	    		for(int j=i;j<driverCount-1;j++)  
 	    			driverList[j]=driverList[j+1];  
 	    		driverList[driverCount-1]=null;
 	    		driverCount--;  
@@ -132,7 +138,7 @@ public class Admin {
 	
 	public void setRating(float drating,int driverNo) {    
 		for(int i=0;i<driverCount;i++) {
-			if(driverNo==driverList[i].getDriverID()) {
+			if(driverNo==driverList[i].getDriverID()) {  
 				float newRating = (float) ((driverList[i].getRating() + drating)/2.0);
 				Driver d1 = new Driver(driverList[i].getDriverID(),driverList[i].getName(),driverList[i].getLocation(),driverList[i].getCarType(),driverList[i].getNumber(),driverList[i].getAge(),driverList[i].getCabID(),driverList[i].getGender(),newRating);
 				driverList[i] = d1;
