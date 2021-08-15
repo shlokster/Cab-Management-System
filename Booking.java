@@ -91,7 +91,7 @@ public class Booking {
             }}
 
         if(i == numOfDrivers){
-            System.out.println("Driver unavailable, please try again later.");
+            System.out.println("Female Driver unavailable, please try again later.");
             return false;
         }
         if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
@@ -126,7 +126,7 @@ public class Booking {
    
 
     public void showBooking(){                  //displays booking details
-        System.out.println("\t\tBooking Details: \t\t");
+        System.out.println("\n\n\t\tBooking Details: \t\t");
         System.out.println("*********************************************");
         System.out.println("Booking ID: " + bookingID);
         System.out.println("Driver Name: " + drivers[driverno].getName());

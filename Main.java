@@ -62,10 +62,10 @@ import java.util.Scanner;
 			System.out.println("Enter time of travel between 0000 and 2359: ");	        
 	        int time = Integer.parseInt(in.next());    
 	        System.out.println("Enter pickup location from the following: ");
-	        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
+	        System.out.println("*-Liverpool\n*-Manchester\n*-Cambridge\n*-Oxford\n*-Brighton\n");
 	        String location1 = in.next();
 	        System.out.println("Enter drop-off location from the following: ");
-	        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
+	        System.out.println("*-Liverpool\n*-Manchester\n*-Cambridge\n*-Oxford\n*-Brighton\n");
 	        String location2 = in.next();
 	        System.out.println("Enter type of car from the following: ");
 			System.out.println("*-Sedan\n*-Mini\n*-SUV\n");
@@ -89,7 +89,7 @@ import java.util.Scanner;
 	    	        }
 	    	       
 	    	     else {
-	        			System.out.println("Sorry! Female Driver Unavailable. You will be assigned a male driver");
+	        			System.out.println("\nYou will be assigned a male driver");
 
 	        	        if(b1.isDriver(location1))  
 	        	        {
@@ -172,7 +172,7 @@ import java.util.Scanner;
 			    int cabid = myObj1.nextInt();
 			   	      
 			    System.out.println("Enter gender (M/F) : ");
-			    String gender = myObj1.nextLine();
+			    String gender = myObj1.next();
 			         
 			    System.out.println("Enter rating : ");
 			    float rating = myObj1.nextFloat();
