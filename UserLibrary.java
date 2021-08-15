@@ -8,6 +8,7 @@
  * 		void printDetails()			Prints all the information of the current user object
  *		void logIn()				To input the usercreditionals are create its object
  *		void register()				To create a new user
+ *		String getUserGender()			To return the gender of the user
  */
 import java.io.File;
 import java.io.FileNotFoundException;
