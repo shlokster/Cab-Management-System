@@ -1,7 +1,6 @@
 /*
- *		double getReceipt()			Calculate the fare of the trip
- * 		void userlibrary()			Creates a list of drivers
- * 		void addUser()				Adds a driver to the CSV file
+ * 		void userlibrary()			Creates a list of users
+ * 		void addUser()				Adds a user to the CSV file
  * 		void reWritefile()			Method to update the CSV file with the values
  * 		int createObject()			Creates a user onject and loads its values in the User constructor
  * 		Boolean getStatus()			To check if user wants to book a ride or not
