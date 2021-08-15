@@ -1,4 +1,12 @@
-
+/*
+ *		double getReceipt()			Calculate the fare of the trip
+ * 		void addDriver()			Adds a driver to the CSV file
+ * 		void buildDriverList()			Creates a list of drivers
+ * 		int NextdriverID()			Calculate the 'DriverID' of the new added driver
+ * 		void deleteDriver()			Deletes a driver from the CSV file
+ * 		void setRating()			Sets the new rating after each trip for the respective driver
+ * 		void reWritefile()			Method to update the CSV file with the values
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
