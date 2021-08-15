@@ -1,4 +1,4 @@
-/*
+/* METHODS
  * 		void userlibrary()			Creates a list of users
  * 		void addUser()				Adds a user to the CSV file
  * 		void reWritefile()			Method to update the CSV file with the values
