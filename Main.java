@@ -168,12 +168,18 @@ import java.util.Scanner;
 		    System.out.println("Do you want to delete a driver (Y or N) : ");
 		    String checkdelete = myObj.next();
 		    
-		    if(checkdelete.equals("Y"))  {
+// 		    if(checkdelete.equals("Y"))  {
+// 		    	System.out.println("Enter Driver ID : ");
+// 			    int dID = myObj.nextInt();
+// 			    a.deleteDriver(dID);  
+// 		    }  
+		    	 if(checkdelete.equals("Y"))  {
+		    	System.out.print("The available drivers in the database are : \n");
+		    	a.printDdetails();
 		    	System.out.println("Enter Driver ID : ");
 			    int dID = myObj.nextInt();
 			    a.deleteDriver(dID);  
 		    }  
-		    	 
 
 		    
 		    sc.close();
