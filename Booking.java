@@ -9,7 +9,6 @@ public class Booking {
     private boolean status = false;
 
     public Booking(String filename, DriverLibrary d1){            //gets array of drivers from DriverLibrary.java
-        //DriverLibrary d1 = new DriverLibrary("C:\\Users\\Annant Maheshwari\\eclipse-workspace\\JAVA\\src\\Cab\\Driver.csv");
     	d2 = d1;
     	numOfDrivers = d1.getnumOfDrivers();
         drivers = d1.getDrivers();  
@@ -77,29 +76,30 @@ public class Booking {
         return status;
     }
 
-//        	public boolean isFemaleDriver(String location1){
-//             int i;
-//             for(i = 0; i< numOfDrivers; i++){
+    
+    public Boolean isFemaleDriver(String location1){
+        int i;
+        for(i = 0; i< numOfDrivers; i++){
 
-//                 if((drivers[i].getLocation()).equals(this.location1) && //checks if driver is available at
-//                         (drivers[i].getCarType()).equals(carType) && drivers[i].getGender()==true)  //given location with given carType
-//                 {
-//                     driverno = i;
-//                     System.out.println("Booking successful!");
-//                     status = true;
-//                     return true;
-//                 }}
+            if((drivers[i].getLocation()).equals(this.location1) && //checks if driver is available at
+                    (drivers[i].getCarType()).equals(carType) && (drivers[i].getGender()).equals("F"))  //given location with given carType
+            {
+                driverno = i;
+                System.out.println("Booking successful!");
+                status = true;
+                return true;
+            }}
 
-//             if(i == numOfDrivers){
-//                 System.out.println("Driver unavailable, please try again later.");
-//                 return false;
-//             }
-//             if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
-//                                                     //availability at early hours
-//                 return !(Math.random() >= 0.75);
-//             }
-//             return true;
-//        	}
+        if(i == numOfDrivers){
+            System.out.println("Female Driver unavailable, please try again later.");
+            return false;
+        }
+        if(time >= 130 && time <= 430){         //randomly assigns no driver due to low
+                                                //availability at early hours
+            return !(Math.random() >= 0.75);
+        }
+        return true;
+   	}
 
 //    public boolean makeBooking(){       //gets booking details, calls isDriver(), showBooking(), setLoc()
 //        System.out.println("Enter time of travel: ");
@@ -126,16 +126,14 @@ public class Booking {
    
 
     public void showBooking(){                  //displays booking details
-        System.out.println("\t\tBooking Details: ");
-        System.out.println("**********************************");
+        System.out.println("\n\n\t\tBooking Details: \t\t");
+        System.out.println("*********************************************");
         System.out.println("Booking ID: " + bookingID);
         System.out.println("Driver Name: " + drivers[driverno].getName());
         System.out.println("Driver Contact: " + drivers[driverno].getNumber());
         System.out.println("Time of pickup: " + time);
         System.out.println("Distance: " + getDistance());
     }
-
-    
 
 
 //    public String getlocation1() {

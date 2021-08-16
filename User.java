@@ -5,7 +5,7 @@ public class User
 	protected String uemail,upassword,uname;
 	protected int uage;
 	protected long uPhNum;
-	protected Boolean ugender;
+	protected String ugender;
 
 	
 	public User() {
@@ -14,11 +14,11 @@ public class User
 		uname="";
 		uage=0;
 		uPhNum=0;
-		ugender=false;
+		ugender="";
 		}
 	
 	
-	public User( String name, String email, String password, int age, long PhNum,Boolean gender) {
+	public User( String name, String email, String password, int age, long PhNum,String gender) {
 		uname=name;
 		uemail= email;
 		upassword=password;
@@ -42,7 +42,7 @@ public class User
 	public long getPhNum() {
 		return uPhNum;
 	}
-	public Boolean getGender() {
+	public String getGenderU() {
 		return ugender;
 	}
 	

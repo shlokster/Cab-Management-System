@@ -8,12 +8,12 @@ import java.util.Scanner;
 		System.out.println("Enter 1 for User");
 		System.out.println("Enter 2 for Admin");
 		int choice1;
-		DriverLibrary d = new DriverLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\Driver.csv");
-		Booking b1 = new Booking("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\Driver.csv",d);
-		Admin a = new Admin("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\Driver.csv");
+		DriverLibrary d = new DriverLibrary("Driver.csv");
+		Booking b1 = new Booking("Driver.csv",d);
+		Admin a = new Admin("Driver.csv");
 		
 		UserLibrary u0 = new UserLibrary();
-		u0.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv");
+		u0.userLibrary("User.csv");
 		Scanner sc = new Scanner(System.in);
 		
 		choice1 = sc.nextInt();
@@ -44,8 +44,8 @@ import java.util.Scanner;
 				int aget  = sc.nextInt();
 				System.out.println("Enter Phone Number: ");
 				long PhNumt  = sc.nextLong();
-				System.out.println("Enter Gender: (false for male , true for female)");
-				boolean gendert = sc.nextBoolean();
+				System.out.println("Enter Gender: (M/F)");
+				String gendert = sc.next();
 				u0.register(namet,emailt,passwordt,aget,PhNumt,gendert);
 			}
 			
@@ -62,65 +62,85 @@ import java.util.Scanner;
 			System.out.println("Enter time of travel between 0000 and 2359: ");	        
 	        int time = Integer.parseInt(in.next());    
 	        System.out.println("Enter pickup location from the following: ");
-	        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
+	        System.out.println("*-Liverpool\n*-Manchester\n*-Cambridge\n*-Oxford\n*-Brighton\n");
 	        String location1 = in.next();
 	        System.out.println("Enter drop-off location from the following: ");
-	        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
+	        System.out.println("*-Liverpool\n*-Manchester\n*-Cambridge\n*-Oxford\n*-Brighton\n");
 	        String location2 = in.next();
 	        System.out.println("Enter type of car from the following: ");
-			System.out.println("*-Sedan\n *-Mini\n *-SUV\n");
+			System.out.println("*-Sedan\n*-Mini\n*-SUV\n");
 			String carType = in.next();
 	        b1.createBooking(time, location1, location2, carType);
 	        
 //	        b1.isDriver(location1);
 	        
-//	        if(u0.getGender()==true) {
-//	        	System.out.println("Would you prefer a female driver? (Y/N)");
-//	        	String choiceg = in.next();
-//	        	if(choiceg.equals('Y')) {
-//	        		if(b1.isFemaleDriver(location1))  
-//	    	        {
-//	    	            b1.setBookingID();
-//	    	            b1.showBooking();
-//	    	            b1.setLocation();
-//	    	            System.out.print("Your fare for this ride is : ");		
-//	    				System.out.print(a.getReceipt(b1.getDistance()));
-//	    	        }
-//	        		else {
-//	        			System.out.println("Sorry! Female Driver Unavailable. You are assigned a male driver");
-//	        			if(b1.isDriver(location1))  
-//	        	        {
-//	        	            b1.setBookingID();
-//	        	            b1.showBooking();
-//	        	            b1.setLocation();
-//	        	            System.out.print("Your fare for this ride is : ");		
-//	        				System.out.print(a.getReceipt(b1.getDistance()));
-//	        	        }
-//	        			
-//	        		}
-//	    			
-//	        	}
-//	        }
-	        
-	        if(b1.isDriver(location1))  
-	        {
-	            b1.setBookingID();
-	            b1.showBooking();
-	            b1.setLocation();
-	            System.out.print("Booking Successful!\n");	
-	            System.out.print("Your fare for this ride is : ");		
-				System.out.print(a.getReceipt(b1.getDistance(),b1.getTime()));
+	        if(u0.getUserGender().equals("F")) {
+	        	System.out.println("Would you prefer a female driver? (Y/N)");
+	        	String choiceg = in.next();
+	        	if(choiceg.equals("Y")) {
+	    	     if(b1.isFemaleDriver(location1))  
+	    	        {
+	    	            b1.setBookingID();
+	    	            b1.showBooking();
+	    	            b1.setLocation();
+	    	            System.out.print("Booking Successful!\n");	
+	    	            System.out.print("Your fare for this ride is : ");		
+	    				System.out.print(a.getReceipt(b1.getDistance(),b1.getTime()));
+	    	        }
+	    	       
+	    	     else {
+	        			System.out.println("\nYou will be assigned a male driver");
+
+	        	        if(b1.isDriver(location1))  
+	        	        {
+	        	            b1.setBookingID();
+	        	            b1.showBooking();
+	        	            b1.setLocation();
+	        	            System.out.print("Booking Successful!\n");	
+	        	            System.out.print("Your fare for this ride is : ");		
+	        				System.out.print(a.getReceipt(b1.getDistance(),b1.getTime()));
+	        	        }
+	        		}
+	        	}
+	        	else {
+	        		if(b1.isDriver(location1))  
+    	        	{
+    	            b1.setBookingID();
+    	            b1.showBooking();
+    	            b1.setLocation();
+    	            System.out.print("Booking Successful!\n");	
+    	            System.out.print("Your fare for this ride is : ");		
+    				System.out.print(a.getReceipt(b1.getDistance(),b1.getTime()));
+    	        	}
+	        	} 	
 	        }
+	        
+	        else  //Male User 
+	        	{
+	        		if(b1.isDriver(location1))  
+        	        {
+        	            b1.setBookingID();
+        	            b1.showBooking();
+        	            b1.setLocation();
+        	            System.out.print("Booking Successful!\n");	
+        	            System.out.print("Your fare for this ride is : ");		
+        				System.out.print(a.getReceipt(b1.getDistance(),b1.getTime()));
+        	        }
+        			
+	        	}
+	      	
 			if(b1.getStatus()) {
 				System.out.print("\nPlease enter the rating after the trip : ");
 				float drating = in.nextFloat();
-				a.setRating(drating, b1.getDriverNo());
+				a.setRating(drating, b1.getDriverNo(), location2);
 			}
 	        in.close();
 		}
 		}
 		}
-		else if(choice1==2){
+		
+		
+		else if(choice1==2){ //Admin
 
 			Scanner myObj = new Scanner(System.in);
 			Scanner myObj1 = new Scanner(System.in);
@@ -151,8 +171,8 @@ import java.util.Scanner;
 			    System.out.println("Enter the cab id : ");
 			    int cabid = myObj1.nextInt();
 			   	      
-			    System.out.println("Enter gender (true-Female,false-Male) : ");
-			    boolean gender = myObj1.nextBoolean();
+			    System.out.println("Enter gender (M/F) : ");
+			    String gender = myObj1.next();
 			         
 			    System.out.println("Enter rating : ");
 			    float rating = myObj1.nextFloat();

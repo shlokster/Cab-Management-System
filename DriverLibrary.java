@@ -32,7 +32,7 @@ public class DriverLibrary {
 				long PhNum = Long.parseLong(records[4]);
 				int age = Integer.parseInt(records[5]);
 				int cabID = Integer.parseInt(records[6]);
-				boolean gender = Boolean.parseBoolean(records[7]);
+				String gender = records[7];
 				float rating = Float.parseFloat(records[8]);
 				
 				
@@ -76,7 +76,7 @@ public class DriverLibrary {
 	}
 
 	private void reWritefile(String modifier, int driverno) {
-		filename = "C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\Driver.csv";
+		filename = "Driver.csv";
 		//count = driverno;  
 		
 		try {
