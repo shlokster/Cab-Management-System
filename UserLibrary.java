@@ -138,15 +138,3 @@ public class UserLibrary extends User{
 		status=true;
 	}
 
-//	public static void main(String[] args) {
-//		
-//		UserLibrary u1 = new UserLibrary();  
-//		
-//		u1.userLibrary("C:\\Users\\Shlok\\eclipse-workspace\\ProjectIT\\src\\User.csv"); 
-//		u1.logIn("vanessa@gmail.com","Vanessa123");
-//		u1.printUser();
-//		
-//		
-//	}
-	
-}
