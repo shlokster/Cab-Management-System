@@ -1,4 +1,3 @@
-
 import java.util.*;
 public class Booking {
     private int time, driverno, numOfDrivers;
@@ -51,7 +50,6 @@ public class Booking {
                     (drivers[i].getCarType()).equals(carType))  //given location with given carType
             {
                 driverno = i;
-//                 System.out.println("Booking successful!");
                 status = true;
                 return true;
             }}
@@ -101,29 +99,6 @@ public class Booking {
         return true;
    	}
 
-//    public boolean makeBooking(){       //gets booking details, calls isDriver(), showBooking(), setLoc()
-//        System.out.println("Enter time of travel: ");
-//        Scanner in = new Scanner(System.in);
-//        time = in.nextInt();
-//        System.out.println("Enter pickup location from the following: ");
-//        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
-//        location1 = in.next();
-//        System.out.println("Enter drop-off location from the following: ");
-//        System.out.println("*-Liverpool\n *-Manchester\n *-Cambridge\n *-Oxford\n *-Brighton\n");
-//        location2 = in.next();
-//        System.out.println("Enter type of car: ");
-//        carType = in.next();
-//        isDriver(location1);
-//        if(isDriver(location1))
-//        {
-//            setBookingID();
-//            showBooking();
-//            setLocation();
-//        }
-//        in.close();
-//        return true;
-//    }
-   
 
     public void showBooking(){                  //displays booking details
         System.out.println("\n\n\t\tBooking Details: \t\t");
@@ -136,11 +111,4 @@ public class Booking {
     }
 
 
-//    public String getlocation1() {
-//        return location1;
-//    }
-//
-//    public String getlocation2() {
-//        return location2;
-//    }
 }
