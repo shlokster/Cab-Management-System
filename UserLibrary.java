@@ -12,7 +12,7 @@ public class UserLibrary extends User{
 	public UserLibrary(){}
 	public String filename="User.csv";
 
-	public void userLibrary(String filename) {//Creates a list of users
+	public void userLibrary(String filename) {   //Creates a list of users
 		
 		File myObj = new File(filename);      
 		Scanner myReader;  
@@ -61,7 +61,7 @@ public class UserLibrary extends User{
 		reWritefile("ADD");
 	}
 	
-	private void reWritefile(String modifier) { //Method to update the CSV file with the values
+	private void reWritefile(String modifier) {   //Method to update the CSV file with the values
 				
 		try {
 			if (modifier.equals("ADD")) {
@@ -79,7 +79,7 @@ public class UserLibrary extends User{
 	}
 	
 	
-	public User createObject(String email,String password) { //Creates a user object and loads its values in the User constructor
+	public User createObject(String email,String password) {    //Creates a user object and loads its values in the User constructor
 		
 		int i;
 		int c=-1;
@@ -128,11 +128,11 @@ public class UserLibrary extends User{
 		return UserObj.ugender;
 	}
 	
-	public void logIn(String uemail, String upassword) {//To input the usercreditionals are create its object
+	public void logIn(String uemail, String upassword) {  //To input the usercreditionals are create its object
 		createObject(uemail,upassword);  
 	}  
 	
-	public void register(String uname, String uemail, String upassword, int uage, long uPhNum, String ugender) {//To create a new user
+	public void register(String uname, String uemail, String upassword, int uage, long uPhNum, String ugender) {   //To create a new user
 		addUser(uname,uemail,upassword,uage,uPhNum,ugender);
 		status=true;
 	}
