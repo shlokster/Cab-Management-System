@@ -11,7 +11,7 @@ import java.util.Scanner;
  Methods:
  DriverLibrary()       : Reads the data of the drivers from the csv file
  int getnumOfDrivers() : Return the total number of drivers
- void reWritefile()	   : Method to update the CSV file with the values  
+ void reWritefile()    : Method to update the CSV file with the values  
  Driver[] getDrivers() : Returns an array of drivers
  void setLoc()         : Sets the new location after each trip
  void updateDriverNum  : count of the number of drivers
