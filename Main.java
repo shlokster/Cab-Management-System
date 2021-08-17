@@ -130,7 +130,7 @@ import java.util.Scanner;
 	        	}
 	      	
 			if(b1.getStatus()) {
-				System.out.print("\nPlease enter the rating after the trip : ");
+				System.out.print("\nPlease enter the rating after the trip (Values between 1.0 to 5.0): ");
 				float drating = in.nextFloat();
 				a.setRating(drating, b1.getDriverNo(), location2);
 			}
