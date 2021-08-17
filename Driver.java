@@ -1,15 +1,3 @@
-
-/*
- Methods:
-void driverdetails, 
-Variables:
-String name, location,type 
-long PhNum
-int age, cabID , driverID
-Boolean gender
-Float rating
-*/
-
 public class Driver {
 	private final int driverID;
 	private final String name;
@@ -68,7 +56,7 @@ public class Driver {
 
 	}
         
-	public void setLoc(String location2) {
+	public void setLoc(String location2) {	
         location = location2;
         }
 
