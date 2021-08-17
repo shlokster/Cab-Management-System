@@ -7,17 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-/*
- Methods:
- DriverLibrary()       : Reads the data of the drivers from the csv file
- int getnumOfDrivers() : Return the total number of drivers
- void reWritefile()    : Method to update the CSV file with the values  
- Driver[] getDrivers() : Returns an array of drivers
- void setLoc()         : Sets the new location after each trip
- void updateDriverNum  : count of the number of drivers
- 
- 
- */
 
 
 public class DriverLibrary {
@@ -28,7 +17,7 @@ public class DriverLibrary {
 	String fileHeader;
 	String filename;
 	String Headers;
-	public DriverLibrary(String filename) {  
+	public DriverLibrary(String filename) {  //Reads the data of the drivers from the csv file
 
 			File myObj = new File(filename);      
 			Scanner myReader;   
@@ -64,19 +53,19 @@ public class DriverLibrary {
 		
 		
 	}
-	public Driver[] getDrivers() {
+	public Driver[] getDrivers() {		//Returns an array of drivers
 		return Arrays.copyOf(Drivers,numOfDrivers);  
 	}
 
-	public int getnumOfDrivers(){
+	public int getnumOfDrivers(){ //Return the total number of drivers
 		return numOfDrivers;
 	}
 	
-	public void updateDriverNum() {
+	public void updateDriverNum() {		//count of the number of drivers
 		numOfDrivers++;
 	}
 
-	public void setLoc(String location, int driverNo) {
+	public void setLoc(String location, int driverNo) {	//Sets the new location after each trip
 		for(int i=0;i<numOfDrivers;i++) {
 			if(driverNo==Drivers[i].getDriverID()) {  
 				Driver d1 = new Driver(Drivers[i].getDriverID(),Drivers[i].getName(),location,Drivers[i].getCarType(),Drivers[i].getNumber(),Drivers[i].getAge(),Drivers[i].getCabID(),Drivers[i].getGender(),Drivers[i].getRating());
@@ -87,21 +76,10 @@ public class DriverLibrary {
 		reWritefile("changelo",driverNo);
 	}
 
-	private void reWritefile(String modifier, int driverno) {
-		filename = "Driver.csv";
-		//count = driverno;  
-		
+	private void reWritefile(String modifier, int driverno) {   //Method to update the CSV file with the values  
+		filename = "Driver.csv";		
 		try {
-			/*if (modifier.equals("changeloc")) {
-				FileWriter csvWriter = new FileWriter(filename,true);
-				csvWriter.append(Drivers[count - 1].getDriverID() + "," + Drivers[count - 1].getName() + ","
-						+ Drivers[count - 1].getLocation() + "," + Drivers[count - 1].getCarType() + ","
-						+ Drivers[count - 1].getNumber() + "," + Drivers[count - 1].getAge() + ","
-						+ Drivers[count - 1].getCabID() + "," + Drivers[count - 1].getGender() + ","
-						+ Drivers[count - 1].getRating() + "\n");
-				csvWriter.flush();
-				csvWriter.close();
-			}*/  {
+			 {
 				FileWriter csvWriter = new FileWriter(filename);
 				csvWriter.append(Headers + "\n");
 				for (int i = 0; i < count; i++) {
