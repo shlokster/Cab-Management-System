@@ -4,18 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-/*
- * METHODS :
- * 		Admin()						parameterized constructor
- * 		double getReceipt()			Calculate the fare of the trip
- * 		void addDriver()			Adds a driver to the CSV file
- * 		void buildDriverList()		Creates a list of drivers
- * 		int NextdriverID()			Calculate the 'DriverID' of the new added driver
- * 		void deleteDriver()			Deletes a driver from the CSV file
- * 		void setRating()			Sets the new rating after each trip for the respective driver
- * 		void reWritefile()			Method to update the CSV file with the values
- */
-
 public class Admin {
 
     String filename;
@@ -25,19 +13,19 @@ public class Admin {
     int driverCount = 0;
     DriverLibrary d = new DriverLibrary();
 
-    public Admin(String sfilename) {
+    public Admin(String sfilename) {		//parameterized constructor
         filename = sfilename;
         buildDriverList();
     }
 
-    public double getReceipt(double d,int t) {
+    public double getReceipt(double d,int t) {		//Calculate the fare of the trip
         if(t>=0130 && t<=0430)
             return d*3;
         return d*2;
     }
 
-    public void addDriver(String name, String location, String type, long PhNum, int age, int cabID,
-                          String gender, float rating) {
+    public void addDriver(String name, String location, String type, long PhNum, int age, int cabID,	
+                          String gender, float rating) {		//Adds a driver to the CSV file
 
         int nextDriverID = NextdriverID();
         driverCount++;
@@ -45,7 +33,7 @@ public class Admin {
         reWritefile("ADD");
     }
 
-    private void reWritefile(String modifier) {
+    private void reWritefile(String modifier) {		//Method to update the CSV file with the values
 
         try {
             if (modifier.equals("ADD")) {
@@ -75,7 +63,7 @@ public class Admin {
         }
     }
 
-    private void buildDriverList() {
+    private void buildDriverList() {		//Creates a list of drivers
 
         File myObj = new File(filename);
         Scanner myReader;
@@ -112,19 +100,15 @@ public class Admin {
         }
     }
 
-	/*private void buildDriverList() {
-		DriverLibrary d1 = new DriverLibrary(filename);
-		driverList = d1.getDrivers();
-	}*/
 
-    private int NextdriverID() {
+    private int NextdriverID() {		//Calculate the 'DriverID' of the new added driver
         if (blankFile)
             return 1;
         else
             return driverList[driverCount-1].getDriverID() + 1;
     }
 
-    public void deleteDriver(int driverId) {
+    public void deleteDriver(int driverId) {		//Deletes a driver from the CSV file
 
         for(int i=0;i<driverCount;i++) {
             if(driverId==driverList[i].getDriverID()) {
@@ -138,7 +122,7 @@ public class Admin {
         reWritefile("DELETE");
     }
 
-    public void setRating(float drating,int driverNo,String loc) {
+    public void setRating(float drating,int driverNo,String loc) {	//Sets the new rating after each trip for the respective driver
         driverNo+=1;
         for(int i=0;i<driverCount;i++) {
             if(driverNo == driverList[i].getDriverID()) {
@@ -153,7 +137,7 @@ public class Admin {
         reWritefile("RATING");
     }
 
-    public void printDdetails() {
+    public void printDdetails() {		//prints driver details
         for(int i=0;i<driverCount;i++) {
             System.out.print(driverList[i].getDriverID()+"\t"+driverList[i].getName()+"\n");
         }
